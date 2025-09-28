@@ -15,7 +15,7 @@ front-app/register-ui/dist/
 **/.env
 
 # Docker
-**/Dockerfile
+#**/Dockerfile
 
 # Logs
 **/*.log
