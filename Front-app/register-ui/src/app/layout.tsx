@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+/*----------------importacion de estilos locales-----------------------*/
 import "./styles/globals.css";
+/*----------------importacion de estilos locales-----------------------*/
+/*----------------importacion de estilos Externas-----------------------*/
+import 'bootstrap/dist/css/bootstrap.min.css';
+/*----------------importacion de estilos Externas-----------------------*/
 
 /* const geistSans = Geist({
   variable: "--font-geist-sans",
