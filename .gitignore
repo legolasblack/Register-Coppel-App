@@ -1,0 +1,35 @@
+# Node.js / Next.js / React
+front-app/register-ui/node_modules/
+front-app/register-ui/build/
+front-app/register-ui/.env
+front-app/register-ui/.next/
+front-app/register-ui/dist/
+
+# Java / Spring Boot
+**/target/
+**/.classpath
+**/.project
+**/.settings/
+**/.idea/
+**/*.iml
+**/.env
+
+# Docker
+**/Dockerfile
+
+# Logs
+**/*.log
+**/logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Database persistent data (optional, uncomment if needed)
+# databases/auth-db/
+# databases/customers-db/
+
+# Misc
+.env
+*.env
+*.local
