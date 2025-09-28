@@ -1,0 +1,13 @@
+:root {
+  --coppel-azul: #0047BA;
+  --coppel-amarillo: #FFD200;
+  --coppel-blanco: #FFFFFF;
+  --coppel-gris-claro: #F5F5F5;
+  --coppel-font: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.btn-custom{
+    background: var(--coppel-azul) !important;
+    color: var(--coppel-blanco) !important;
+    margin-left: 1rem;
+}

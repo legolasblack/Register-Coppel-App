@@ -35,6 +35,9 @@ import Swal from 'sweetalert2'
             <button className="btn btn-danger" onClick={handleClick}>
               Click aquí
             </button>
+            <button className="btn btn-custom" onClick={handleClick}>
+              Click en boton personalizado
+            </button>
           </div>
         </div>
       </>
