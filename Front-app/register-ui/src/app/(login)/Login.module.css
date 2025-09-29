@@ -1,0 +1,39 @@
+.containerImg {
+  position: relative; 
+  background-image: url('/images/img_login.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;  
+  height: 400px; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  color: white; 
+}
+
+/* Div overlay azul semi-transparente */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 255, 0.267); 
+  pointer-events: none; 
+  z-index: 1; 
+}
+
+
+.loginBannerText {
+  font-family: var(--coppel-font);
+  font-size: 3rem;  
+  font-weight: bold;
+  text-align: center;
+  z-index: 2;
+}
+
+.cardLogin{
+    background-color: var(--coppel-blanco) !important;
+  border-radius: var(--border-radius) !important;
+  padding: 2rem;
+}
