@@ -4,10 +4,55 @@
   --coppel-blanco: #FFFFFF;
   --coppel-gris-claro: #F5F5F5;
   --coppel-font: "Roboto", "Helvetica", "Arial", sans-serif;
+
+    --amarillo-pastel: #F6F7BB;
+  --azul-deslavado: #D9E9F7;
+  --color-texto: #1B1A16;
+  --color-shadow: #4e4e50;
+  --color-background: #FFFFFF;
+  --color-interaccion: #006FB9;
+
+  /* Border radius */
+  --border-radius: 16px;
+  --border-radius-button: 100px;
+
+  /* Colores para el logo */
+  --logo-amarillo: #F0D325;
+  --logo-azul: #1D42E9;
+  --logo-tipografia: #EBF1F4;
 }
 
-.btn-custom{
-    background: var(--coppel-azul) !important;
-    color: var(--coppel-blanco) !important;
-    margin-left: 1rem;
+.container-form{
+  /*  background: var(--coppel-amarillo) !important;  */
+   background: var(--coppel-azul) !important; 
+  /* margin: 0px !important; */
+}
+
+.card-form {
+  background-color: var(--coppel-blanco) !important;
+  border-radius: var(--border-radius) !important;
+  box-shadow: 0 0px 100px var(--color-shadow
+  );
+  padding: 2rem;
+}
+.card-form .title {
+color: var(--coppel-azul);
+margin-top: 1rem;
+margin-bottom: 2rem;
+}
+
+.btn-outline-primary{
+border-radius: var(--border-radius-button) !important;
+border-color: var(--color-interaccion) !important;
+color: var(--color-interaccion) !important;
+}
+
+.btn-outline-primary:hover{
+border-radius: var(--border-radius-button) !important;
+border-color: var(--color-interaccion) !important;
+color: var(--coppel-blanco) !important;
+}
+
+.btn-primary {
+  border-radius: var(--border-radius-button) !important;
 }

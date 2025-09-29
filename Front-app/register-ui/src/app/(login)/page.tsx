@@ -4,9 +4,9 @@
 
 import Swal from 'sweetalert2'
 
-  export default function Home() {
+export default function Home() {
 
-    const handleClick = () => {
+  const handleClick = () => {
     Swal.fire({
       title: '¿Estás seguro?',
       text: 'Esta acción no se puede deshacer.',
@@ -22,28 +22,28 @@ import Swal from 'sweetalert2'
       }
     });
   };
-    
 
-    return (
-      <>
-        <div className="row">
-          <div className="col-3">integracion de bootstrap</div>
-          <div className="col-3">calando clases de columnas</div>
 
-          <div className="container">
-            <h1 className="text-primary">Hola, Bootstrap con Next.js</h1>
-            <button className="btn btn-danger" onClick={handleClick}>
-              Click aquí
-            </button>
-            <button className="btn btn-custom" onClick={handleClick}>
-              Click en boton personalizado
-            </button>
-          </div>
+  return (
+    <>
+      <div className="row">
+        <div className="col-3">integracion de bootstrap</div>
+        <div className="col-3">calando clases de columnas</div>
+
+        <div className="container">
+          <h1 className="text-primary">Hola, Bootstrap con Next.js</h1>
+          <button className="btn btn-danger" onClick={handleClick}>
+            Click aquí
+          </button>
+          <button className="btn btn-custom" onClick={handleClick}>
+            Click en boton personalizado
+          </button>
         </div>
-      </>
-    );
-  }
+      </div>
+    </>
+  );
+}
 
 
 
-  
+
