@@ -1,6 +1,9 @@
 version: '3.8'
 
 services:
+
+
+# seccion de frontend ya verificada y funcionando se
   front-app:
     build:
       context: ./Front-app/register-ui
@@ -8,3 +11,33 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+#Final seccion frontend
+
+#contenedor postgres para customer-service
+  postgres-customer:
+    image: postgres:15
+    container_name: postgres-customer
+    environment:
+      POSTGRES_DB: customers_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./customer-service/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5433:5432"
+#contenedor postgres para customer-service
+
+
+#contenedor postgres para auth-service
+  postgres-auth:
+    image: postgres:15
+    container_name: postgres-auth
+    environment:
+      POSTGRES_DB: auth_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./auth-service/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5434:5432"
+#contenedor postgres para auth-service
