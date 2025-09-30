@@ -1,19 +1,18 @@
 version: '3.8'
 
 services:
-
-
-# seccion de frontend ya verificada y funcionando se
+  # seccion de frontend
   front-app:
+    container_name: Frontend-app
     build:
       context: ./Front-app/register-ui
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     restart: unless-stopped
-#Final seccion frontend
+  # Final seccion frontend
 
-#contenedor postgres para customer-service
+  # contenedor postgres para customer-service
   postgres-customer:
     image: postgres:15
     container_name: postgres-customer
@@ -25,10 +24,8 @@ services:
       - ./customer-service/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5433:5432"
-#contenedor postgres para customer-service
 
-
-#contenedor postgres para auth-service
+  # contenedor postgres para auth-service
   postgres-auth:
     image: postgres:15
     container_name: postgres-auth
@@ -40,4 +37,24 @@ services:
       - ./auth-service/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5434:5432"
-#contenedor postgres para auth-service
+
+  # contenedor customer-service
+  customer-service:
+    container_name: customer-service
+    build:
+      context: ./customer-service
+      dockerfile: Dockerfile
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-customer:5432/customers_db
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres
+    depends_on:
+      - postgres-customer
+    ports:
+      - "8082:8080"
+    restart: unless-stopped
+
+networks:
+  default:
+    name: register-coppel-network
+    driver: bridge
