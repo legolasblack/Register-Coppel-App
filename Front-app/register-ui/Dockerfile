@@ -11,7 +11,7 @@ COPY package.json package-lock.json* ./
 RUN npm install
 
 # Copia el resto del código de la aplicación
-COPY . .
+COPY . ./
 
 # Expone el puerto por defecto de Next.js
 EXPOSE 3000

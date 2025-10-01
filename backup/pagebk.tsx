@@ -3,7 +3,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Swal from 'sweetalert2';
 import { useRouter } from 'next/navigation';
-import styles from './Login.module.css';
+import styles from './Login.module.css'
 
 type LoginData = {
   username: string;
@@ -22,35 +22,21 @@ export default function LoginForm() {
 
   const onSubmit: SubmitHandler<LoginData> = async (data) => {
     try {
-        console.log(data);
-        console.log(process.env.NEXT_PUBLIC_AUTH_API);
-      const res = await fetch(process.env.NEXT_PUBLIC_AUTH_API+"/v1/auth/login", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: data.username,
-          password: data.password,
-        }),
-      });
-
-      if (!res.ok) {
+      // Aquí se hace petición real al backend con fetch() una vez terminada las pruebas
+      if (data.username === 'admin' && data.password === '123456') {
+        sessionStorage.setItem('token', 'fake-jwt');
+        /* Swal.fire('Éxito', 'Inicio de sesión correcto', 'success'); */
+        Swal.fire({
+          icon:"success",
+          title:"Exito",
+          text:"Inicio de sesión correcto, Bienvenido",
+          showConfirmButton:false,
+          timer:1500
+        });
+        router.push('/customer-register-form');
+      } else {
         throw new Error('Usuario o contraseña incorrectos');
       }
-
-      const token = await res.text(); 
-      localStorage.setItem('token', token);
-
-      Swal.fire({
-        icon: 'success',
-        title: 'Éxito',
-        text: 'Inicio de sesión correcto, Bienvenido',
-        showConfirmButton: false,
-        timer: 1500,
-      });
-
-      router.push('/customer-register-form');
     } catch (err: any) {
       Swal.fire('Error', err.message, 'error');
     }
@@ -71,8 +57,10 @@ export default function LoginForm() {
 
         {/* Sección de login */}
         <div className="col-12 col-lg-4 d-flex align-items-center justify-content-center bg-white">
-          <div className={`w-100 mx-3 shadow-lg ${styles.cardLogin}`}>
-            <h2 className="text-center mb-4">Iniciar Sesión</h2>
+          <div className={`w-100  mx-3 shadow-lg ${styles.cardLogin}`}>
+            <h2 className="text-center mb-4">
+              Iniciar Sesión
+            </h2>
 
             <form onSubmit={handleSubmit(onSubmit)} noValidate>
               {/* Usuario */}
@@ -88,7 +76,7 @@ export default function LoginForm() {
 
               {/* Contraseña */}
               <div className="mb-3">
-                <label htmlFor="password" className="form-label">Contraseña</label>
+                <label htmlFor="password" className="form-label ">Contraseña</label>
                 <input
                   id="password"
                   type="password"
@@ -111,9 +99,15 @@ export default function LoginForm() {
                   <p className="mb-0">O</p>
                   <hr className="flex-grow-1 mx-4" />
                 </div>
-                <button className="btn btn-outline-primary btn-coppel m-3">Continuar con Google</button>
-                <button className="btn btn-outline-primary btn-coppel m-3">Continuar con Facebook</button>
-                <button className="btn btn-outline-primary btn-coppel m-3">Continuar con Apple</button>
+                <button className="btn btn-outline-primary btn-coppel m-3">
+                  Continuar  con Google
+                </button>
+                <button className="btn btn-outline-primary btn-coppel m-3">
+                  Continuasr con Facebook
+                </button>
+                <button className="btn btn-outline-primary btn-coppel m-3">
+                  Continuasr con Apple
+                </button>
               </div>
             </form>
           </div>
@@ -122,3 +116,5 @@ export default function LoginForm() {
     </div>
   );
 }
+
+

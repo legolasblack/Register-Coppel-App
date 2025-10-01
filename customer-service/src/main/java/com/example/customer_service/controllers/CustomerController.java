@@ -13,6 +13,7 @@ import com.example.customer_service.services.CustomerService;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*", allowedHeaders = "*") 
 @RequestMapping("/v1/customers")
 @RequiredArgsConstructor
 public class CustomerController {
