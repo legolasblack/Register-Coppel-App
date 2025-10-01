@@ -29,7 +29,3 @@ Thumbs.db
 # databases/auth-db/
 # databases/customers-db/
 
-# Misc
-.env
-*.env
-*.local
