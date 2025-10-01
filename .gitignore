@@ -1,7 +1,7 @@
 # Node.js / Next.js / React
 front-app/register-ui/node_modules/
 front-app/register-ui/build/
-front-app/register-ui/.env
+#front-app/register-ui/.env
 front-app/register-ui/.next/
 front-app/register-ui/dist/
 
@@ -12,7 +12,6 @@ front-app/register-ui/dist/
 **/.settings/
 **/.idea/
 **/*.iml
-**/.env
 
 # Docker
 #**/Dockerfile
