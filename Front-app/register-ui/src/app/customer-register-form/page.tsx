@@ -1,8 +1,10 @@
 'use client';
 
-import React from 'react';
+
+import React, { useEffect } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import Swal from 'sweetalert2';
+import { useRouter } from 'next/navigation';
 
 type FormData = {
   nombre: string;
@@ -27,7 +29,18 @@ export default function ClienteForm() {
     { mode: 'onChange', }
   );
 
-  const onSubmit: SubmitHandler<FormData> = (data) => {
+  const router = useRouter();
+
+  // ✅ Validar si existe token al cargar
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      Swal.fire('Acceso denegado', 'Debes iniciar sesión', 'warning');
+      router.push('/');
+    }
+  }, [router]);
+
+/*   const onSubmit: SubmitHandler<FormData> = (data) => {
     Swal.fire({
       title: 'Cliente registrado',
       html: `
@@ -42,6 +55,36 @@ export default function ClienteForm() {
       icon: 'success',
     });
     reset();
+  }; */
+    const onSubmit: SubmitHandler<FormData> = async (data) => {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      Swal.fire('Error', 'No se encontró sesión activa', 'error');
+      router.push('/');
+      return;
+    }
+
+    try {
+      const res = await fetch(process.env.NEXT_PUBLIC_CUSTOMER_API +"/v1/customers", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`, 
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) {
+        const errorMsg = await res.text();
+        throw new Error(errorMsg || 'Error al registrar cliente');
+      }
+
+      Swal.fire('Éxito', 'Cliente registrado correctamente', 'success');
+      reset();
+    } catch (err: any) {
+      Swal.fire('Error', err.message, 'error');
+    }
   };
 
   return (
