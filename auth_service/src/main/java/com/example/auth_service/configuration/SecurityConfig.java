@@ -28,7 +28,7 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable()) 
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/v1/auth/login","/v1/auth/validate").permitAll() // ← permite acceso sin autenticación
+                .requestMatchers("/v1/helloauth","/v1/auth/login","/v1/auth/validate").permitAll() // ← permite acceso sin autenticación
                 .anyRequest().authenticated() // ← el resto requiere autenticación
             )
             .httpBasic(Customizer.withDefaults()); // o .formLogin(), o tu filtro JWT
