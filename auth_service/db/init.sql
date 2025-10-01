@@ -21,13 +21,13 @@ CREATE TABLE IF NOT EXISTS user_roles (
 
 INSERT INTO users
 (username, "password", enabled)
-VALUES('legolasblack.lothbrok', 'test12345', true);
+VALUES('legolasblack.lothbrok', '$2a$10$tJN8SVbBrXOSUiNSbX99ue6VUxNVhobEl5FhbcBuS/vt4TgCWrKe2', true);
 INSERT INTO users
 (username, "password", enabled)
-VALUES('Admin.Test', 'test12345', true);
+VALUES('Admin.Test', '$2a$10$tJN8SVbBrXOSUiNSbX99ue6VUxNVhobEl5FhbcBuS/vt4TgCWrKe2', true);
 INSERT INTO users
 (username, "password", enabled)
-VALUES('User.Test', 'test12345', true);
+VALUES('User.Test', '$2a$10$tJN8SVbBrXOSUiNSbX99ue6VUxNVhobEl5FhbcBuS/vt4TgCWrKe2', true);
 
 INSERT INTO roles
 ("name")
